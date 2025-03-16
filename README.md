@@ -1,3 +1,3 @@
 # goruntu-isleme
-
-import cv2
+ import cv2
+ from ultralystic import yolo
