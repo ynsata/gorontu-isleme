@@ -53,7 +53,7 @@ def norm_px(px, res):
 def px_to_angle(px, res, fov):
     x, y = norm_px(px,res)
     angle_x = x * fov[0] / 2
-    angle_y = y * fov[1] / 2
+    angle_y = -y * fov[1] / 2
 
     return (angle_x, angle_y)
 
@@ -96,10 +96,10 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     print("x: ",x,"y: ",y )
     print(f"{dikey_komut=}\t{mevcud_dikey=}")
     # if abs(pid_output_dikey) > ESIK_DIKEY:
-    #     yeni_dikey = max(110, min(170, dikey_komut))
+    yeni_dikey = max(110, min(170, dikey_komut))
     #     # print(f"yeni_dikey={yeni_dikey}")
     #     if yeni_dikey != mevcud_dikey:
-    #         servo_dikey.set_angle(hedef_dikey, smooth=True, step=1, delay=0.004)
+    servo_dikey.set_angle(yeni_dikey, smooth=True, step=1, delay=0.004)
     #         print(
     #             # f"[DİKEY] mevcud={mevcud_dikey:.2f}, hedef={hedef_dikey:.2f} (yazılımsal {pid_output_dikey:.2f}), çıktı={pid_output_dikey:.2f}, yeni={yeni_dikey}"
     #         )
