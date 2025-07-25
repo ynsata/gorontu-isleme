@@ -124,9 +124,9 @@ class AnaPencere(QtWidgets.QMainWindow):
         ret, frame = self.kamera.read()
         if not ret:
             return
-
+        img_hw = frame.shape
         if self.otonom_mod:
-            results = self.model.predict(source=frame, stream=True, imgsz=1280, conf=0.7, device="cuda")
+            results = self.model.predict(source=frame, stream=True, imgsz=1280, conf=0.7, device="cuda",verbose=False)
             for r in results:
                 boxes = r.boxes
                 for box in boxes:
@@ -135,6 +135,9 @@ class AnaPencere(QtWidgets.QMainWindow):
                     h=abs(y1-y2)
 
                     cx, cy = int((x1 + x2) / 2), int((y1 + y2) / 2)
+
+
+                    print("tespit merkez:",cx,cy)
                     cls_id = int(box.cls[0])
                     
                     
@@ -149,10 +152,10 @@ class AnaPencere(QtWidgets.QMainWindow):
                     if class_name == "dusman":
                         if self.sock:
                             try:
-                                nx=cx-400
-                                nx/=400
-                                ny=cy-400
-                                ny/=400
+                                nx=cx-img_hw[1]
+                                nx/=img_hw[1]
+                                ny=cy-img_hw[0]
+                                ny/=img_hw[0]
                                 ny*=-1
                                 veri_dict = {
                                     "class_name": class_name,

@@ -29,8 +29,8 @@ ESIK_YATAY = 0.3
 ESIK_DIKEY = 0.3
 
 # --- Görüntü Boyutları ---
-GORUNTU_GENISLIK = 800
-GORUNTU_YUKSEKLIK = 800
+GORUNTU_GENISLIK = 640
+GORUNTU_YUKSEKLIK = 480
 
 # --- Dikey Servo için yazılımsal offset ---
 OFFSET_DIKEY = 128  # Gerçekte 135° olan açı yazılımda 0° kabul edilecek
