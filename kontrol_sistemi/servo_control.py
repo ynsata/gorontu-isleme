@@ -1,7 +1,7 @@
 from pid import PID
 import lgpio
 from time import sleep
-
+import numpy as np
 
 # --- Senaryo Modu Tanımı ---
 senaryo_modu = "YETENEK10"
@@ -65,6 +65,7 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     hedef_yatay = target_angles[0]
     hedef_dikey = target_angles[1]
 
+    hedef_dikey = np.clip(hedef_dikey,-1,1)
     
     mevcut_yatay = servo_yatay.current_angle
     # print(f"mevcut_Y = {mevcut_yatay}")
