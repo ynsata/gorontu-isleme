@@ -26,7 +26,7 @@ class ServoMotor:
         start_angle = max(self.min_angle, min(self.max_angle, start_angle))
         self.current_angle = start_angle
         self.set_angle(start_angle, smooth=False)
-        print(f"[{self.name}] Servo başlatıldı: {self.current_angle}°")
+        # print(f"[{self.name}] Servo başlatıldı: {self.current_angle}°")
 
     def _convert_to_pulse(self, angle):
         angle = max(self.min_angle, min(self.max_angle, angle))
@@ -42,14 +42,14 @@ class ServoMotor:
         else:
             pulse = self._convert_to_pulse(angle)
             duty_cycle = (pulse / 20000) * 100
-            print(f"{angle=}",f"{pulse=}",f"{duty_cycle=}")
+            # print(f"{angle=}",f"{pulse=}",f"{duty_cycle=}")
 
             lgpio.tx_pwm(self.chip, self.pin, self.frequency, duty_cycle)
             # sleep(delay)
             # lgpio.tx_pwm(self.chip, self.pin, 0, 0)
             self.current_angle = angle
 
-        print(f"[{self.name}] Servo ayarlandı: {angle}°")
+        # print(f"[{self.name}] Servo ayarlandı: {angle}°")
 
     def _smooth_move(self, target_angle, step, delay):
         current = self.current_angle
@@ -68,9 +68,9 @@ class ServoMotor:
             sleep(delay)
 
         lgpio.tx_pwm(self.chip, self.pin, 0, 0)
-        print(f"[{self.name}] Servo hedefe ulaştı: {self.current_angle}°")
+        # print(f"[{self.name}] Servo hedefe ulaştı: {self.current_angle}°")
 
     def stop(self):
         lgpio.tx_pwm(self.chip, self.pin, 0, 0)
         lgpio.gpiochip_close(self.chip)
-        print(f"[{self.name}] Servo durduruldu")
+        # print(f"[{self.name}] Servo durduruldu")

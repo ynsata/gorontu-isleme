@@ -78,10 +78,11 @@ def main():
                         print(f"y = {y}")
 
                         if x is not None and y is not None:
-                            print(f"[MAIN] OTONOM veri alındı: x={x}, y={y}")
+                            # print(f"[MAIN] OTONOM veri alındı: x={x}, y={y}")
                             handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec)
                         else:
-                            print("[MAIN] Uyarı: 'x' veya 'y' verisi eksik.")
+                            # print("[MAIN] Uyarı: 'x' veya 'y' verisi eksik.")
+                            pass
 
                     else:
                         print("[MAIN] Bilinmeyen veri türü veya mod uyumsuzluğu.")
