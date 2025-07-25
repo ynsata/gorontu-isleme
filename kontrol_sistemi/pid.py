@@ -1,6 +1,6 @@
 import numpy as np
 
-CONTROL_MAX = 5
+CONTROL_MAX = 10
 INTEGRAL_MAX = 10
 
 
