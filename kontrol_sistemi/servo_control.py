@@ -93,6 +93,7 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     pid_output_dikey = pid_dikey.calculate(hedef_dikey, 0,time_sec)
     # print(f"pid_output_dikey = {pid_output_dikey}")
     dikey_komut = mevcud_dikey + pid_output_dikey
+    print("x: ",x,"y: ",y )
     print(f"{dikey_komut=}\t{mevcud_dikey=}")
     # if abs(pid_output_dikey) > ESIK_DIKEY:
     #     yeni_dikey = max(110, min(170, dikey_komut))
