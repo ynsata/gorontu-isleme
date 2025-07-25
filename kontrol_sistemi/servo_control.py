@@ -21,8 +21,8 @@ def atesle():
 
 # --- PID Ayarları ---
 # pid_yatay = PID(Kp=0.035, Ki=0.019, Kd=0.45)
-pid_yatay = PID(Kp=0.25, Ki=0.0, Kd=0)
-pid_dikey = PID(Kp=0.4, Ki=0.0, Kd=0.25)
+pid_yatay = PID(Kp=0.5, Ki=0.0, Kd=0)
+pid_dikey = PID(Kp=0.6, Ki=0.0, Kd=0.25)
 
 # --- PID eşikleri ---
 ESIK_YATAY = 0.3
