@@ -52,7 +52,7 @@ def norm_px(px, res):
 
 def px_to_angle(px, res, fov):
     x, y = norm_px(px,res)
-    angle_x = x * fov[0] / 2
+    angle_x = -x * fov[0] / 2
     angle_y = -y * fov[1] / 2
 
     return (angle_x, angle_y)
