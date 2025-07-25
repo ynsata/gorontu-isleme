@@ -72,6 +72,7 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     # print(f"pid_y={pid_output_yatay}	")
     # if abs(pid_output_yatay) > ESIK_YATAY:
     yeni_yatay = max(0, min(270, round(mevcut_yatay + pid_output_yatay))) 
+    print(f"{yeni_yatay=}",f"{hedef_yatay=}")
         # print(f"yeni_yatay={yeni_yatay}")
         # if yeni_yatay != mevcut_yatay:
     servo_yatay.set_angle(yeni_yatay, smooth=True, step=1, delay=0.005)
@@ -93,8 +94,8 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     pid_output_dikey = pid_dikey.calculate(hedef_dikey, 0,time_sec)
     # print(f"pid_output_dikey = {pid_output_dikey}")
     dikey_komut = mevcud_dikey + pid_output_dikey
-    print("x: ",x,"y: ",y )
-    print(f"{dikey_komut=}\t{mevcud_dikey=}")
+    # print("x: ",x,"y: ",y )
+    # print(f"{dikey_komut=}\t{mevcud_dikey=}")
     # if abs(pid_output_dikey) > ESIK_DIKEY:
     yeni_dikey = max(110, min(170, dikey_komut))
     #     # print(f"yeni_dikey={yeni_dikey}")
