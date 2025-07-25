@@ -126,7 +126,7 @@ class AnaPencere(QtWidgets.QMainWindow):
             return
         img_hw = frame.shape
         if self.otonom_mod:
-            results = self.model.predict(source=frame, stream=True, imgsz=1280, conf=0.7, device="cuda",verbose=False)
+            results = self.model.predict(source=frame, stream=True, imgsz=1280, conf=0.4, device="cuda",verbose=False)
             for r in results:
                 boxes = r.boxes
                 for box in boxes:

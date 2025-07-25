@@ -1,5 +1,5 @@
 import numpy as np
-
+from collections import deque
 CONTROL_MAX = 10
 INTEGRAL_MAX = 10
 
@@ -11,6 +11,7 @@ class PID:
         self.Kd = Kd
         self.last_error = 0
         self.integral = 0
+        self.derivs = deque(maxlen=3)
 
         self.last_time = None
 
@@ -36,6 +37,8 @@ class PID:
 
         # Hatanın değişim oranı (türev bileşeni)
         derivative = (error - self.last_error) / dt
+        self.derivs.append(derivative)
+        derivative = np.mean(self.derivs)
         self.last_error = error
 
         # PID formülü ile çıkış hesapla
