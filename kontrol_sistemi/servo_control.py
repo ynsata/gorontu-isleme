@@ -93,7 +93,7 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     # print(f"mevcud_dikey = {mevcud_dikey}")
 
     pid_output_dikey = pid_dikey.calculate(hedef_dikey, 0,time_sec)
-    if abs( pid_output_dikey)<1:
+    if abs( pid_output_dikey)<0.25:
         return
     # print(f"pid_output_dikey = {pid_output_dikey}")
     dikey_komut = mevcud_dikey + pid_output_dikey
