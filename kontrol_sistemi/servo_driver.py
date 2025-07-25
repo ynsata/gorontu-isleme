@@ -41,12 +41,12 @@ class ServoMotor:
             self._smooth_move(angle, step, delay)
         else:
             pulse = self._convert_to_pulse(angle)
-            duty_cycle = (pulse / 2000) * 100
+            duty_cycle = (pulse / 20000) * 100
             print(f"{angle=}",f"{pulse=}",f"{duty_cycle=}")
 
             lgpio.tx_pwm(self.chip, self.pin, self.frequency, duty_cycle)
-            sleep(delay)
-            lgpio.tx_pwm(self.chip, self.pin, 0, 0)
+            # sleep(delay)
+            # lgpio.tx_pwm(self.chip, self.pin, 0, 0)
             self.current_angle = angle
 
         print(f"[{self.name}] Servo ayarlandı: {angle}°")
