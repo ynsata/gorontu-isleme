@@ -46,7 +46,7 @@ def norm_px(px, res):
 
     ny = y - res[1] / 2
     ny /= res[1] / 2
-
+    print(f"norm px: {nx},{ny}")
     return nx, ny
 
 
