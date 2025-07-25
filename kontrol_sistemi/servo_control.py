@@ -22,7 +22,7 @@ def atesle():
 # --- PID Ayarları ---
 # pid_yatay = PID(Kp=0.035, Ki=0.019, Kd=0.45)
 pid_yatay = PID(Kp=0.25, Ki=0.0, Kd=0)
-pid_dikey = PID(Kp=1, Ki=0, Kd=0)
+pid_dikey = PID(Kp=0.25, Ki=0, Kd=0)
 
 # --- PID eşikleri ---
 ESIK_YATAY = 0.3
@@ -65,7 +65,7 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     hedef_yatay = target_angles[0]
     hedef_dikey = target_angles[1]
 
-    hedef_dikey = np.clip(hedef_dikey,-1,1)
+    # hedef_dikey = np.clip(hedef_dikey,-1,1)
     
     mevcut_yatay = servo_yatay.current_angle
     # print(f"mevcut_Y = {mevcut_yatay}")
