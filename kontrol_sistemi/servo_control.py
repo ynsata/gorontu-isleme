@@ -22,7 +22,7 @@ def atesle():
 # --- PID Ayarları ---
 # pid_yatay = PID(Kp=0.035, Ki=0.019, Kd=0.45)
 pid_yatay = PID(Kp=0.25, Ki=0.0, Kd=0)
-pid_dikey = PID(Kp=0.25, Ki=0.05, Kd=0)
+pid_dikey = PID(Kp=0.3, Ki=0.1, Kd=0.05)
 
 # --- PID eşikleri ---
 ESIK_YATAY = 0.3
@@ -93,7 +93,7 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     # print(f"mevcud_dikey = {mevcud_dikey}")
 
     pid_output_dikey = pid_dikey.calculate(hedef_dikey, 0,time_sec)
-    if abs( pid_output_dikey)<2:
+    if abs( pid_output_dikey)<1:
         return
     # print(f"pid_output_dikey = {pid_output_dikey}")
     dikey_komut = mevcud_dikey + pid_output_dikey
