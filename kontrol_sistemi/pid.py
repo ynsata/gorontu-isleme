@@ -11,7 +11,7 @@ class PID:
         self.Kd = Kd
         self.last_error = 0
         self.integral = 0
-        self.derivs = deque(maxlen=3)
+        self.derivs = deque(maxlen=5)
 
         self.last_time = None
 
