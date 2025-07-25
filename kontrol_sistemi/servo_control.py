@@ -65,43 +65,50 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     hedef_yatay = target_angles[0]
     hedef_dikey = target_angles[1]
 
-    print(f"hedef_yatay={hedef_yatay}")
+    
     mevcut_yatay = servo_yatay.current_angle
-    print(f"mevcut_Y = {mevcut_yatay}")
+    # print(f"mevcut_Y = {mevcut_yatay}")
     pid_output_yatay = pid_yatay.calculate(hedef_yatay, 0,time_sec)
-    print(f"pid_y={pid_output_yatay}	")
+    # print(f"pid_y={pid_output_yatay}	")
     if abs(pid_output_yatay) > ESIK_YATAY:
         yeni_yatay = max(0, min(270, round(mevcut_yatay + pid_output_yatay))) 
-        print(f"yeni_yatay={yeni_yatay}")
+        # print(f"yeni_yatay={yeni_yatay}")
         if yeni_yatay != mevcut_yatay:
             servo_yatay.set_angle(yeni_yatay, smooth=True, step=1, delay=0.005)
             print(
-                f"[YATAY] mevcut={mevcut_yatay:.2f}, hedef={hedef_yatay:.2f}, çıktı={pid_output_yatay:.2f}, yeni={yeni_yatay}"
+                # f"[YATAY] mevcut={mevcut_yatay:.2f}, hedef={hedef_yatay:.2f}, çıktı={pid_output_yatay:.2f}, yeni={yeni_yatay}"
             )
         else:
-            print("[YATAY] Açı aynı, hareket yok.")
+            # print("[YATAY] Açı aynı, hareket yok.")
+            pass
     else:
-        print("[YATAY] PID çıktısı eşik altında, hareket yok.")
+        # print("[YATAY] PID çıktısı eşik altında, hareket yok.")
+        pass
 
     mevcud_dikey = servo_dikey.current_angle
 
-    print(f"hedef_dikey = {hedef_dikey}")
-    print(f"mevcud_dikey = {mevcud_dikey}")
+    # print(f"hedef_dikey = {hedef_dikey}")
+    # print(f"mevcud_dikey = {mevcud_dikey}")
 
     pid_output_dikey = pid_dikey.calculate(hedef_dikey, 0,time_sec)
-    print(f"pid_output_dikey = {pid_output_dikey}")
+    # print(f"pid_output_dikey = {pid_output_dikey}")
+    dikey_komut = mevcud_dikey + pid_output_dikey
+    print(f"{dikey_komut=}")
     if abs(pid_output_dikey) > ESIK_DIKEY:
-        yeni_dikey = max(110, min(170, round(mevcud_dikey + pid_output_dikey)))
-        print(f"yeni_dikey={yeni_dikey}")
+        yeni_dikey = max(110, min(170, dikey_komut))
+        # print(f"yeni_dikey={yeni_dikey}")
         if yeni_dikey != mevcud_dikey:
             servo_dikey.set_angle(hedef_dikey, smooth=True, step=1, delay=0.004)
             print(
-                f"[DİKEY] mevcud={mevcud_dikey:.2f}, hedef={hedef_dikey:.2f} (yazılımsal {pid_output_dikey:.2f}), çıktı={pid_output_dikey:.2f}, yeni={yeni_dikey}"
+                # f"[DİKEY] mevcud={mevcud_dikey:.2f}, hedef={hedef_dikey:.2f} (yazılımsal {pid_output_dikey:.2f}), çıktı={pid_output_dikey:.2f}, yeni={yeni_dikey}"
             )
         else:
-            print("[DİKEY] Açı aynı, hareket yok.")
+            # print("[DİKEY] Açı aynı, hareket yok.")
+            pass
     else:
-        print("[DİKEY] PID çıktısı eşik altında, hareket yok.")
+        # print("[DİKEY] PID çıktısı eşik altında, hareket yok.")
+        pass
+    
 
 
 # --- Manuel Mod: Komutlara Göre Servo + Ateşleme ---

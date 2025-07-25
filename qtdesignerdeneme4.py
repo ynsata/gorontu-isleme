@@ -197,6 +197,7 @@ class AnaPencere(QtWidgets.QMainWindow):
 
     def basili_tut(self, yon):
         self.aktif_yon = yon
+        # print(f"{self.aktif_yon=}")
         self.servo_timer.start(100)
 
     def durdur(self):
