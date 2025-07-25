@@ -6,7 +6,9 @@ import socket
 # --- Servo Tanımları ---
 servo_yatay = ServoMotor(
     name="Yatay", 
-    pin=5, 
+    pin=5,
+    offset=135,
+    is_reverse=False, 
     min_angle=0, 
     max_angle=270, 
     min_pulse=500, 
@@ -16,6 +18,8 @@ servo_yatay = ServoMotor(
 servo_dikey = ServoMotor(
     name="Dikey", 
     pin=6, 
+    offset=128,
+    is_reverse=False, 
     min_angle=0, 
     max_angle=270,
     min_pulse=500, 
