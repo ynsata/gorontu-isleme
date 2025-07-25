@@ -34,7 +34,7 @@ class ServoMotor:
         pulse_range = self.max_pulse - self.min_pulse
         return self.min_pulse + (normalized * pulse_range)
 
-    def set_angle(self, angle, smooth=True, step=1, delay=0.08):
+    def set_angle(self, angle, smooth=True, step=1, delay=0.005):
         angle = max(self.min_angle, min(self.max_angle, angle))
 
         if smooth:
