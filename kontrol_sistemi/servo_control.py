@@ -75,7 +75,7 @@ def handle_servo_direction(servo_yatay, servo_dikey, x, y,time_sec):
     print(f"{yeni_yatay=}",f"{hedef_yatay=}",f"{mevcut_yatay}")
         # print(f"yeni_yatay={yeni_yatay}")
         # if yeni_yatay != mevcut_yatay:
-    # servo_yatay.set_angle(yeni_yatay, smooth=True, step=1, delay=0.005)
+    servo_yatay.set_angle(yeni_yatay, smooth=False, step=1, delay=0.005)
         #     # print(
         #         # f"[YATAY] mevcut={mevcut_yatay:.2f}, hedef={hedef_yatay:.2f}, çıktı={pid_output_yatay:.2f}, yeni={yeni_yatay}"
         #     # )
